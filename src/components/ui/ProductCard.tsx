@@ -100,7 +100,7 @@ const ProductCard = ({ product, featured = false }: ProductCardProps) => {
           </div>
         </div>
         <div className="flex items-center justify-between">
-          <p className="font-semibold">${product.price.toFixed(2)}</p>
+          <p className="font-semibold">₹{product.price.toLocaleString('en-IN')}</p>
           {product.stock <= 5 && product.stock > 0 && (
             <p className="text-xs text-orange-500 font-medium">Only {product.stock} left</p>
           )}

@@ -173,7 +173,7 @@ const ProductDetail = () => {
                 
                 {/* Price */}
                 <p className="text-2xl font-semibold mb-4">
-                  ${product.price.toFixed(2)}
+                  ₹{product.price.toLocaleString('en-IN')}
                 </p>
                 
                 {/* Description */}

@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -12,6 +11,7 @@ import { toast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [loginForm, setLoginForm] = useState({
     email: '',
@@ -45,6 +45,8 @@ const Login = () => {
         title: "Login successful",
         description: "You have been logged in.",
       });
+      // Redirect to home page after successful login
+      navigate('/');
     }, 1500);
   };
 
@@ -70,6 +72,8 @@ const Login = () => {
         title: "Registration successful",
         description: "Your account has been created.",
       });
+      // Redirect to home page after successful registration
+      navigate('/');
     }, 1500);
   };
 

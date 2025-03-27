@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -26,12 +25,10 @@ const Products = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Get initial products based on URL category
     const initialProducts = getProductsByCategory(categoryParam);
     setFilteredProducts(initialProducts);
     setSelectedCategory(categoryParam);
     
-    // Simulate loading
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 500);
@@ -40,7 +37,6 @@ const Products = () => {
   }, [categoryParam]);
 
   useEffect(() => {
-    // Update URL when category changes
     if (selectedCategory !== categoryParam) {
       const newParams = new URLSearchParams(location.search);
       if (selectedCategory === 'all') {
@@ -51,14 +47,12 @@ const Products = () => {
       navigate(`${location.pathname}?${newParams.toString()}`);
     }
   
-    // Apply filters
     let result = selectedCategory === 'all' 
       ? [...products] 
       : products.filter(product => 
           product.category.toLowerCase() === selectedCategory
         );
     
-    // Apply search filter
     if (searchTerm) {
       result = result.filter(product =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -66,7 +60,6 @@ const Products = () => {
       );
     }
     
-    // Apply price filter
     result = result.filter(product => 
       product.price >= priceRange[0] && product.price <= priceRange[1]
     );
@@ -76,7 +69,6 @@ const Products = () => {
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
-    // Close filter menu on mobile when category changes
     setIsFilterMenuOpen(false);
   };
 
@@ -111,7 +103,6 @@ const Products = () => {
         <Navbar />
         
         <main className="flex-1 pt-24">
-          {/* Hero Banner */}
           <div className="bg-secondary">
             <div className="container mx-auto px-4 md:px-6 py-12 text-center">
               <h1 className="text-3xl md:text-4xl font-bold tracking-tight animate-fade-in">
@@ -124,7 +115,6 @@ const Products = () => {
           </div>
           
           <div className="container mx-auto px-4 md:px-6 py-8">
-            {/* Mobile filter toggle */}
             <div className="flex md:hidden justify-between items-center mb-4">
               <Button
                 variant="outline"
@@ -142,13 +132,11 @@ const Products = () => {
             </div>
             
             <div className="flex flex-col md:flex-row gap-6">
-              {/* Filters */}
               <aside className={cn(
                 "md:w-64 flex-shrink-0",
                 isFilterMenuOpen ? "block" : "hidden md:block"
               )}>
                 <div className="sticky top-24 space-y-6">
-                  {/* Search */}
                   <div className="space-y-2">
                     <h3 className="font-medium">Search</h3>
                     <div className="relative">
@@ -172,7 +160,6 @@ const Products = () => {
                     </div>
                   </div>
                   
-                  {/* Categories */}
                   <div className="space-y-2">
                     <h3 className="font-medium">Categories</h3>
                     <div className="space-y-1">
@@ -193,24 +180,22 @@ const Products = () => {
                     </div>
                   </div>
                   
-                  {/* Price Range */}
                   <div className="space-y-4">
                     <h3 className="font-medium">Price Range</h3>
                     <Slider
                       defaultValue={[0, getMaxPrice()]}
                       max={getMaxPrice()}
-                      step={1}
+                      step={100}
                       value={priceRange}
                       onValueChange={handlePriceChange}
                       className="py-4"
                     />
                     <div className="flex items-center justify-between">
-                      <span className="text-sm">${priceRange[0]}</span>
-                      <span className="text-sm">${priceRange[1]}</span>
+                      <span className="text-sm">₹{priceRange[0].toLocaleString('en-IN')}</span>
+                      <span className="text-sm">₹{priceRange[1].toLocaleString('en-IN')}</span>
                     </div>
                   </div>
                   
-                  {/* Mobile Close Button */}
                   <div className="md:hidden">
                     <Button
                       onClick={toggleFilterMenu}
@@ -222,9 +207,7 @@ const Products = () => {
                 </div>
               </aside>
               
-              {/* Products Grid */}
               <div className="flex-1">
-                {/* Product Count */}
                 <div className="hidden md:flex justify-between items-center mb-6">
                   <h2 className="text-xl font-semibold tracking-tight">All Products</h2>
                   <span className="text-sm text-muted-foreground">
@@ -233,7 +216,6 @@ const Products = () => {
                 </div>
                 
                 {isLoading ? (
-                  // Skeleton loading
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[...Array(6)].map((_, i) => (
                       <div key={i} className="animate-pulse">
@@ -252,7 +234,6 @@ const Products = () => {
                     ))}
                   </div>
                 ) : (
-                  // No products found
                   <div className="text-center py-12">
                     <h3 className="text-lg font-medium mb-2">No products found</h3>
                     <p className="text-muted-foreground mb-6">
