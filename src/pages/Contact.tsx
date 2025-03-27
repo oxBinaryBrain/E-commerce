@@ -6,8 +6,8 @@ import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, Phone, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -31,8 +31,8 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "Message sent",
-        description: "We'll get back to you as soon as possible.",
+        title: "Message Sent",
+        description: "We've received your message and will get back to you soon.",
       });
       setFormData({
         name: '',
@@ -48,7 +48,7 @@ const Contact = () => {
     <>
       <Helmet>
         <title>Contact Us | Aesthete</title>
-        <meta name="description" content="Get in touch with our team for inquiries, customer support, or partnership opportunities." />
+        <meta name="description" content="Get in touch with our team for inquiries, support, or collaboration opportunities." />
       </Helmet>
 
       <div className="flex min-h-screen flex-col">
@@ -57,171 +57,201 @@ const Contact = () => {
         <main className="flex-1 pt-24">
           {/* Hero Section */}
           <section className="bg-secondary">
-            <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6 py-16">
               <div className="max-w-3xl mx-auto text-center">
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 animate-fade-in">Get in Touch</h1>
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 animate-fade-in">Get In Touch</h1>
                 <p className="text-muted-foreground leading-relaxed animate-fade-in [animation-delay:200ms]">
-                  We'd love to hear from you. Whether you have a question about our products, 
-                  need assistance with an order, or want to explore partnership opportunities, 
-                  our team is here to help.
+                  We'd love to hear from you. Whether you have a question about our products, need support, 
+                  or are interested in collaborating, our team is here to help.
                 </p>
               </div>
             </div>
           </section>
           
-          {/* Contact Information & Form Section */}
-          <section className="py-16 md:py-24">
+          {/* Contact Form & Info */}
+          <section className="py-16">
             <div className="container mx-auto px-4 md:px-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                {/* Contact Information */}
-                <div className="space-y-8 animate-slide-up">
-                  <h2 className="text-2xl font-bold tracking-tight mb-6">Contact Information</h2>
-                  
-                  {/* Contact Cards */}
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4 p-6 rounded-lg border border-border">
-                      <Mail className="h-6 w-6 text-primary shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-medium mb-1">Email Us</h3>
-                        <p className="text-muted-foreground mb-2">For general inquiries and customer support:</p>
-                        <a href="mailto:hello@aesthete.com" className="text-primary hover:underline">hello@aesthete.com</a>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4 p-6 rounded-lg border border-border">
-                      <Phone className="h-6 w-6 text-primary shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-medium mb-1">Call Us</h3>
-                        <p className="text-muted-foreground mb-2">Monday to Friday, 9am to 5pm (PST):</p>
-                        <a href="tel:+18005551234" className="text-primary hover:underline">+1 (800) 555-1234</a>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4 p-6 rounded-lg border border-border">
-                      <MapPin className="h-6 w-6 text-primary shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-medium mb-1">Visit Us</h3>
-                        <p className="text-muted-foreground mb-2">Our flagship showroom:</p>
-                        <address className="not-italic text-primary">
-                          123 Design District<br />
-                          San Francisco, CA 94103<br />
-                          United States
-                        </address>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Business Hours */}
-                  <div className="pt-6 border-t border-border">
-                    <h3 className="font-medium mb-3">Business Hours</h3>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li className="flex justify-between">
-                        <span>Monday - Friday</span>
-                        <span>9:00 AM - 5:00 PM</span>
-                      </li>
-                      <li className="flex justify-between">
-                        <span>Saturday</span>
-                        <span>10:00 AM - 4:00 PM</span>
-                      </li>
-                      <li className="flex justify-between">
-                        <span>Sunday</span>
-                        <span>Closed</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
                 {/* Contact Form */}
-                <div className="animate-slide-up" style={{ animationDelay: "200ms" }}>
-                  <h2 className="text-2xl font-bold tracking-tight mb-6">Send a Message</h2>
+                <div className="animate-slide-up">
+                  <h2 className="text-2xl font-bold tracking-tight mb-6">Send Us a Message</h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium mb-2">
-                          Name
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label htmlFor="name" className="text-sm font-medium">
+                          Your Name
                         </label>
                         <Input
                           id="name"
                           name="name"
+                          placeholder="John Doe"
+                          required
                           value={formData.name}
                           onChange={handleChange}
-                          required
-                          placeholder="Your full name"
                         />
                       </div>
-                      
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-2">
-                          Email
+                      <div className="space-y-2">
+                        <label htmlFor="email" className="text-sm font-medium">
+                          Email Address
                         </label>
                         <Input
                           id="email"
                           name="email"
                           type="email"
+                          placeholder="john@example.com"
+                          required
                           value={formData.email}
                           onChange={handleChange}
-                          required
-                          placeholder="Your email address"
                         />
                       </div>
-                      
-                      <div>
-                        <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                          Subject
-                        </label>
-                        <Input
-                          id="subject"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          required
-                          placeholder="What is your message about?"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label htmlFor="message" className="block text-sm font-medium mb-2">
-                          Message
-                        </label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          required
-                          placeholder="Your message..."
-                          rows={6}
-                        />
-                      </div>
-                      
-                      <Button type="submit" className="w-full" disabled={isSubmitting}>
-                        {isSubmitting ? "Sending..." : "Send Message"}
-                      </Button>
-                      
-                      <p className="text-xs text-muted-foreground text-center">
-                        By submitting this form, you agree to our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
-                      </p>
                     </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="subject" className="text-sm font-medium">
+                        Subject
+                      </label>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        placeholder="How can we help you?"
+                        required
+                        value={formData.subject}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="text-sm font-medium">
+                        Message
+                      </label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        placeholder="Tell us more about your inquiry..."
+                        rows={6}
+                        required
+                        value={formData.message}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    
+                    <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
                   </form>
+                </div>
+                
+                {/* Contact Info */}
+                <div className="space-y-8 animate-slide-up [animation-delay:200ms]">
+                  <h2 className="text-2xl font-bold tracking-tight mb-6">Contact Information</h2>
+                  
+                  <div className="space-y-6">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                        <MapPin size={20} />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Our Location</h3>
+                        <address className="not-italic text-muted-foreground mt-1">
+                          123 Design Avenue<br />
+                          San Francisco, CA 94107<br />
+                          United States
+                        </address>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                        <Phone size={20} />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Phone</h3>
+                        <div className="text-muted-foreground mt-1">
+                          <p>Customer Service: <a href="tel:+18005551234" className="hover:text-primary">+1 (800) 555-1234</a></p>
+                          <p>General Inquiries: <a href="tel:+14155559876" className="hover:text-primary">+1 (415) 555-9876</a></p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                        <Mail size={20} />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Email</h3>
+                        <div className="text-muted-foreground mt-1">
+                          <p>Customer Support: <a href="mailto:support@aesthete.com" className="hover:text-primary">support@aesthete.com</a></p>
+                          <p>Press Inquiries: <a href="mailto:press@aesthete.com" className="hover:text-primary">press@aesthete.com</a></p>
+                          <p>Wholesale: <a href="mailto:wholesale@aesthete.com" className="hover:text-primary">wholesale@aesthete.com</a></p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                        <Clock size={20} />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Hours</h3>
+                        <div className="text-muted-foreground mt-1">
+                          <p>Monday - Friday: 9:00 AM - 6:00 PM PT</p>
+                          <p>Saturday: 10:00 AM - 4:00 PM PT</p>
+                          <p>Sunday: Closed</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Map or Image */}
+                  <div className="mt-8 rounded-lg overflow-hidden border border-border h-[300px] w-full">
+                    <img 
+                      src="https://images.unsplash.com/photo-1577543539197-d7c701048d63?q=80&w=1000&auto=format&fit=crop" 
+                      alt="Map of Aesthete office location in San Francisco" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </section>
           
-          {/* Map Section */}
-          <section className="py-8 md:py-16 bg-secondary">
+          {/* FAQ Section */}
+          <section className="py-16 bg-secondary">
             <div className="container mx-auto px-4 md:px-6">
-              <div className="aspect-video rounded-lg overflow-hidden shadow-lg animate-fade-in">
-                <iframe
-                  title="Aesthete Store Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50470.77218878676!2d-122.43825211378747!3d37.76407044367796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1697583377554!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+              <div className="max-w-3xl mx-auto">
+                <h2 className="text-2xl font-bold tracking-tight mb-8 text-center">Frequently Asked Questions</h2>
+                
+                <div className="space-y-6">
+                  <div className="bg-background rounded-lg p-6 animate-fade-in">
+                    <h3 className="text-lg font-medium mb-2">What is your return policy?</h3>
+                    <p className="text-muted-foreground">
+                      We offer a 30-day return policy for most items. Products must be in their original 
+                      condition with tags attached. Please visit our <a href="/shipping" className="text-primary hover:underline">Shipping & Returns</a> page for full details.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-background rounded-lg p-6 animate-fade-in [animation-delay:200ms]">
+                    <h3 className="text-lg font-medium mb-2">How long does shipping take?</h3>
+                    <p className="text-muted-foreground">
+                      Standard shipping typically takes 3-7 business days within the continental US. 
+                      International shipping times vary by location, generally 7-14 business days.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-background rounded-lg p-6 animate-fade-in [animation-delay:400ms]">
+                    <h3 className="text-lg font-medium mb-2">Do you offer wholesale opportunities?</h3>
+                    <p className="text-muted-foreground">
+                      Yes, we partner with select retailers who share our aesthetic and values. 
+                      Please contact our wholesale team at <a href="mailto:wholesale@aesthete.com" className="text-primary hover:underline">wholesale@aesthete.com</a> for more information.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="text-center mt-8">
+                  <Button variant="outline" asChild>
+                    <a href="/faq">View All FAQs</a>
+                  </Button>
+                </div>
               </div>
             </div>
           </section>

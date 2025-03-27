@@ -3,77 +3,14 @@ import { Helmet } from 'react-helmet';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { Download } from 'lucide-react';
+import { ArrowDownToLine, ExternalLink } from 'lucide-react';
 
 const Press = () => {
-  const pressReleases = [
-    {
-      id: 1,
-      title: "Aesthete Launches New Sustainable Homeware Collection",
-      date: "October 15, 2023",
-      excerpt: "The latest collection features recycled materials and carbon-neutral manufacturing processes.",
-      link: "/press/sustainable-collection"
-    },
-    {
-      id: 2,
-      title: "Aesthete Opens New Flagship Store in San Francisco",
-      date: "July 8, 2023",
-      excerpt: "The new location showcases our full product range in an immersive minimalist environment.",
-      link: "/press/flagship-store"
-    },
-    {
-      id: 3,
-      title: "Aesthete Announces Partnership with Leading Sustainable Materials Provider",
-      date: "May 22, 2023",
-      excerpt: "This collaboration will enhance our sustainable material sourcing and reduce environmental impact.",
-      link: "/press/material-partnership"
-    },
-    {
-      id: 4,
-      title: "Aesthete Named in 'Top 50 Sustainable Brands' List",
-      date: "February 10, 2023",
-      excerpt: "Recognition for our commitment to environmental responsibility and ethical business practices.",
-      link: "/press/sustainable-award"
-    }
-  ];
-  
-  const mediaFeatures = [
-    {
-      id: 1,
-      publication: "Design Magazine",
-      title: "The Rise of Minimalist Living: Aesthete Leads the Way",
-      date: "September 2023",
-      link: "https://example.com/design-magazine"
-    },
-    {
-      id: 2,
-      publication: "Home & Style",
-      title: "How Aesthete is Redefining Modern Home Essentials",
-      date: "August 2023",
-      link: "https://example.com/home-style"
-    },
-    {
-      id: 3,
-      publication: "Sustainable Business Journal",
-      title: "Case Study: Aesthete's Approach to Ethical Production",
-      date: "July 2023",
-      link: "https://example.com/sustainable-business"
-    },
-    {
-      id: 4,
-      publication: "The Minimalist",
-      title: "Interview with Aesthete's Founder on Design Philosophy",
-      date: "June 2023",
-      link: "https://example.com/minimalist"
-    }
-  ];
-
   return (
     <>
       <Helmet>
         <title>Press | Aesthete</title>
-        <meta name="description" content="Press releases, media coverage, and resources for journalists and publications." />
+        <meta name="description" content="Press releases, media coverage, and brand assets for Aesthete." />
       </Helmet>
 
       <div className="flex min-h-screen flex-col">
@@ -82,97 +19,201 @@ const Press = () => {
         <main className="flex-1 pt-24">
           {/* Hero Section */}
           <section className="bg-secondary">
-            <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6 py-16">
               <div className="max-w-3xl mx-auto text-center">
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 animate-fade-in">Press & Media</h1>
                 <p className="text-muted-foreground leading-relaxed animate-fade-in [animation-delay:200ms]">
-                  Find the latest news, press releases, and media resources about Aesthete. 
-                  For press inquiries, please contact our media team at press@aesthete.com.
+                  Resources and information for journalists, bloggers, and media professionals.
+                  For press inquiries, please contact <a href="mailto:press@aesthete.com" className="text-primary hover:underline">press@aesthete.com</a>.
                 </p>
               </div>
             </div>
           </section>
           
-          {/* Press Releases Section */}
-          <section className="py-16 md:py-24">
+          {/* Press Releases */}
+          <section className="py-16">
             <div className="container mx-auto px-4 md:px-6">
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Press Releases</h2>
+              <h2 className="text-2xl font-bold tracking-tight mb-8">Recent Press Releases</h2>
               
-              <div className="space-y-6 animate-slide-up">
-                {pressReleases.map((item) => (
-                  <div key={item.id} className="border border-border rounded-lg p-6 hover:bg-secondary/50 transition-colors">
-                    <p className="text-sm text-muted-foreground mb-2">{item.date}</p>
-                    <h3 className="text-xl font-medium mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground mb-4">{item.excerpt}</p>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link to={item.link}>Read More</Link>
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-          
-          {/* Media Coverage Section */}
-          <section className="py-16 md:py-24 bg-secondary">
-            <div className="container mx-auto px-4 md:px-6">
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Media Coverage</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up" style={{ animationDelay: "200ms" }}>
-                {mediaFeatures.map((item) => (
-                  <div key={item.id} className="bg-background border border-border rounded-lg p-6">
-                    <p className="text-primary font-medium mb-2">{item.publication}</p>
-                    <h3 className="text-lg font-medium mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{item.date}</p>
-                    <Button variant="ghost" size="sm" className="text-primary" asChild>
-                      <a href={item.link} target="_blank" rel="noopener noreferrer">Read Article →</a>
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-          
-          {/* Press Kit Section */}
-          <section className="py-16 md:py-24">
-            <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-              <div className="text-center mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">Press Kit</h2>
-                <p className="text-muted-foreground">
-                  Download our press kit containing logos, product images, and company information.
-                </p>
-              </div>
-              
-              <div className="bg-secondary rounded-lg p-8 border border-border animate-fade-in">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <h3 className="text-xl font-medium mb-4">Aesthete Press Kit</h3>
-                    <ul className="space-y-2 text-muted-foreground mb-6">
-                      <li>• Brand logos (PNG, SVG, EPS)</li>
-                      <li>• High-resolution product photography</li>
-                      <li>• Company fact sheet</li>
-                      <li>• Founder biographies</li>
-                      <li>• Sustainability information</li>
-                    </ul>
-                    <Button className="w-full sm:w-auto" asChild>
-                      <a href="#download">
-                        <Download className="mr-2 h-4 w-4" />
-                        Download Press Kit
-                      </a>
-                    </Button>
-                  </div>
-                  <div className="hidden md:flex justify-center">
-                    <div className="relative w-full max-w-[200px] aspect-square border border-border rounded-lg overflow-hidden">
-                      <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 p-3">
-                        <div className="bg-foreground/10 rounded"></div>
-                        <div className="bg-foreground/10 rounded"></div>
-                        <div className="bg-foreground/10 rounded"></div>
-                        <div className="bg-foreground/10 rounded"></div>
-                      </div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <p className="text-2xl font-bold">A</p>
-                      </div>
+              <div className="space-y-6">
+                <div className="border border-border rounded-lg p-6 hover:border-primary transition-colors animate-fade-in">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-between">
+                    <div>
+                      <span className="text-xs text-muted-foreground">August 12, 2023</span>
+                      <h3 className="text-lg font-medium mt-1">Aesthete Announces Fall/Winter Collection Focused on Sustainable Materials</h3>
+                      <p className="text-muted-foreground mt-2">
+                        The new collection features pieces crafted from responsibly sourced materials, 
+                        highlighting our commitment to environmental sustainability.
+                      </p>
                     </div>
+                    <div className="flex-shrink-0">
+                      <Button variant="outline" size="sm" className="flex items-center gap-2">
+                        <ArrowDownToLine size={16} />
+                        Download
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="border border-border rounded-lg p-6 hover:border-primary transition-colors animate-fade-in [animation-delay:200ms]">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-between">
+                    <div>
+                      <span className="text-xs text-muted-foreground">June 5, 2023</span>
+                      <h3 className="text-lg font-medium mt-1">Aesthete Opens New Flagship Store in SoHo</h3>
+                      <p className="text-muted-foreground mt-2">
+                        Our first East Coast location showcases the full Aesthete collection in an 
+                        immersive retail environment designed by award-winning architect Maya Lin.
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <Button variant="outline" size="sm" className="flex items-center gap-2">
+                        <ArrowDownToLine size={16} />
+                        Download
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="border border-border rounded-lg p-6 hover:border-primary transition-colors animate-fade-in [animation-delay:400ms]">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-between">
+                    <div>
+                      <span className="text-xs text-muted-foreground">March 22, 2023</span>
+                      <h3 className="text-lg font-medium mt-1">Aesthete Receives B Corp Certification</h3>
+                      <p className="text-muted-foreground mt-2">
+                        We're proud to announce our certification as a B Corporation, recognizing our 
+                        commitment to social and environmental performance, transparency, and accountability.
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <Button variant="outline" size="sm" className="flex items-center gap-2">
+                        <ArrowDownToLine size={16} />
+                        Download
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8 text-center">
+                <Button variant="outline">View All Press Releases</Button>
+              </div>
+            </div>
+          </section>
+          
+          {/* Media Coverage */}
+          <section className="py-16 bg-secondary">
+            <div className="container mx-auto px-4 md:px-6">
+              <h2 className="text-2xl font-bold tracking-tight mb-8">Media Coverage</h2>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="bg-background border border-border rounded-lg overflow-hidden animate-scale-in">
+                  <img 
+                    src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=400&auto=format&fit=crop" 
+                    alt="Magazine cover featuring Aesthete products" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="font-medium mb-2">"The Future of Sustainable Design"</h3>
+                    <p className="text-muted-foreground text-sm mb-3">
+                      Architectural Digest explores how Aesthete is redefining minimalism through 
+                      sustainable materials and ethical manufacturing.
+                    </p>
+                    <a href="#" className="text-primary hover:underline text-sm flex items-center">
+                      Read Article <ExternalLink size={14} className="ml-1" />
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="bg-background border border-border rounded-lg overflow-hidden animate-scale-in [animation-delay:200ms]">
+                  <img 
+                    src="https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?q=80&w=400&auto=format&fit=crop" 
+                    alt="Newspaper featuring Aesthete products" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="font-medium mb-2">"How Aesthete is Changing Home Decor"</h3>
+                    <p className="text-muted-foreground text-sm mb-3">
+                      The New York Times highlights Aesthete's innovative approach to creating 
+                      timeless pieces for the modern home.
+                    </p>
+                    <a href="#" className="text-primary hover:underline text-sm flex items-center">
+                      Read Article <ExternalLink size={14} className="ml-1" />
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="bg-background border border-border rounded-lg overflow-hidden animate-scale-in [animation-delay:400ms]">
+                  <img 
+                    src="https://images.unsplash.com/photo-1551817958-c5b51e7b4a33?q=80&w=400&auto=format&fit=crop" 
+                    alt="Design magazine featuring Aesthete products" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="font-medium mb-2">"Minimalism Meets Functionality"</h3>
+                    <p className="text-muted-foreground text-sm mb-3">
+                      Dwell magazine features Aesthete's newest collection in their annual 
+                      design issue, celebrating our commitment to purposeful design.
+                    </p>
+                    <a href="#" className="text-primary hover:underline text-sm flex items-center">
+                      Read Article <ExternalLink size={14} className="ml-1" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          {/* Press Kit */}
+          <section className="py-16">
+            <div className="container mx-auto px-4 md:px-6">
+              <div className="max-w-3xl mx-auto">
+                <h2 className="text-2xl font-bold tracking-tight mb-6 text-center">Press Kit</h2>
+                <p className="text-muted-foreground text-center mb-8">
+                  Download our press kit for brand assets, high-resolution product images, founder bios, and fact sheets.
+                </p>
+                
+                <div className="bg-secondary rounded-lg p-8 text-center">
+                  <h3 className="text-xl font-medium mb-4">Aesthete Press Kit</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Includes brand guidelines, logos, product images, and company information.
+                  </p>
+                  <Button size="lg" className="flex items-center gap-2 mx-auto">
+                    <ArrowDownToLine size={18} />
+                    Download Press Kit (ZIP, 42MB)
+                  </Button>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                  <div className="border border-border rounded-lg p-6">
+                    <h3 className="font-medium mb-3">Product Images</h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      High-resolution images of our complete product line, suitable for print and digital media.
+                    </p>
+                    <Button variant="outline" size="sm" className="w-full">Download Images</Button>
+                  </div>
+                  
+                  <div className="border border-border rounded-lg p-6">
+                    <h3 className="font-medium mb-3">Brand Assets</h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      Logos, typography, color palettes, and usage guidelines for the Aesthete brand.
+                    </p>
+                    <Button variant="outline" size="sm" className="w-full">Download Brand Assets</Button>
+                  </div>
+                  
+                  <div className="border border-border rounded-lg p-6">
+                    <h3 className="font-medium mb-3">Company Fact Sheet</h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      Key information about Aesthete, including our history, mission, and leadership.
+                    </p>
+                    <Button variant="outline" size="sm" className="w-full">Download Fact Sheet</Button>
+                  </div>
+                  
+                  <div className="border border-border rounded-lg p-6">
+                    <h3 className="font-medium mb-3">Founder Bios & Photos</h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      Professional biographies and high-resolution photos of Aesthete's founding team.
+                    </p>
+                    <Button variant="outline" size="sm" className="w-full">Download Bios & Photos</Button>
                   </div>
                 </div>
               </div>
@@ -180,27 +221,19 @@ const Press = () => {
           </section>
           
           {/* Contact Section */}
-          <section className="py-16 md:py-24 bg-secondary">
-            <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
+          <section className="py-16 bg-primary text-primary-foreground">
+            <div className="container mx-auto px-4 md:px-6 text-center">
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">Media Inquiries</h2>
-              <p className="text-muted-foreground mb-8">
-                For interview requests, additional information, or media opportunities, 
-                please contact our press team. We typically respond within 24-48 hours.
+              <p className="max-w-2xl mx-auto mb-8">
+                For interview requests, additional information, or to arrange a press visit to 
+                our showroom, please contact our media relations team.
               </p>
-              <div className="bg-background border border-border rounded-lg p-8 max-w-md mx-auto animate-fade-in">
-                <h3 className="text-xl font-medium mb-4">Press Contact</h3>
-                <div className="space-y-2 mb-6">
-                  <p className="flex flex-col sm:flex-row sm:justify-between">
-                    <span className="font-medium">Email:</span>
-                    <a href="mailto:press@aesthete.com" className="text-primary hover:underline">press@aesthete.com</a>
-                  </p>
-                  <p className="flex flex-col sm:flex-row sm:justify-between">
-                    <span className="font-medium">Phone:</span>
-                    <a href="tel:+18005551234" className="text-primary hover:underline">+1 (800) 555-1234</a>
-                  </p>
-                </div>
-                <Button asChild className="w-full">
-                  <Link to="/contact">Contact Us</Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button variant="secondary" asChild>
+                  <a href="mailto:press@aesthete.com">Email Press Team</a>
+                </Button>
+                <Button variant="outline" className="border-primary-foreground/20 hover:bg-primary-foreground/10">
+                  +1 (415) 555-7890
                 </Button>
               </div>
             </div>
