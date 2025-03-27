@@ -15,6 +15,16 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Careers from "./pages/Careers";
+import Sustainability from "./pages/Sustainability";
+import Press from "./pages/Press";
+import FAQ from "./pages/FAQ";
+import Shipping from "./pages/Shipping";
+import Warranty from "./pages/Warranty";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +46,21 @@ const App = () => (
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/login" element={<Login />} />
+            
+            {/* Company Pages */}
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/sustainability" element={<Sustainability />} />
+            <Route path="/press" element={<Press />} />
+            
+            {/* Customer Service Pages */}
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/warranty" element={<Warranty />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -107,7 +107,7 @@ const Index = () => {
                   </p>
                   <Button className="mt-4" asChild>
                     <Link to="/about">
-                      Learn More
+                      Our Story
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
@@ -140,7 +140,7 @@ const Index = () => {
                   <Button className="sm:w-auto w-full">Subscribe</Button>
                 </div>
                 <p className="text-xs text-muted-foreground mt-2">
-                  By subscribing, you agree to our Privacy Policy and consent to receive updates.
+                  By subscribing, you agree to our <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link> and consent to receive updates.
                 </p>
               </div>
             </div>

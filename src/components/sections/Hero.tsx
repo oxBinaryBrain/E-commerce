@@ -84,7 +84,7 @@ const Hero = () => {
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover-lift">
+            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover-lift" asChild>
               <Link to="/about">
                 Our Story
               </Link>
