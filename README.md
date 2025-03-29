@@ -39,3 +39,22 @@ Follow these steps to set up the project locally:
 
 1. Clone the repository:
 git clone https://github.com/yourusername/e-commerce.git
+
+
+2. Navigate to the project directory:
+cd e-commerce
+
+
+3. Install dependencies:
+npm install
+
+
+4. Start the development server:
+npm start
+
+The application will run on your local server
+
+
+## Deployment
+
+This project is deployed on Vercel.
