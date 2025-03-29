@@ -26,7 +26,7 @@ This is a modern e-commerce website built using **React.js** and deployed on **V
 ### Backend:
 - Node.js (optional if backend is included)
 - Express.js
-- MongoDB / Firebase (optional for database)
+- MongoDB / Firebase / Supabase (optional for database)
 
 ### Deployment:
 - Vercel (for hosting)
