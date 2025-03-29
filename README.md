@@ -38,3 +38,4 @@ This is a modern e-commerce website built using **React.js** and deployed on **V
 Follow these steps to set up the project locally:
 
 1. Clone the repository:
+git clone https://github.com/yourusername/e-commerce.git
