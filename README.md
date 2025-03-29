@@ -1,69 +1,40 @@
-# Welcome to your Lovable project
+# E-Commerce Website
 
-## Project info
+This is a modern e-commerce website built using **React.js** and deployed on **Vercel**. It offers a seamless shopping experience with features such as product browsing, cart management, and checkout functionality.
 
-**URL**: https://lovable.dev/projects/a6af14e4-4330-4acd-8f82-a0fb23be9461
+---
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Product Listing**: Browse through a variety of products with detailed descriptions.
+- **Search Functionality**: Quickly find products using the search bar.
+- **Shopping Cart**: Add, remove, and update items in the cart.
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
+- **Checkout Process**: Secure and user-friendly payment gateway integration.
+- **User Authentication**: Sign up, log in, and manage user accounts (optional).
+- **Admin Dashboard** *(if applicable)*: Manage products, orders, and users.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a6af14e4-4330-4acd-8f82-a0fb23be9461) and start prompting.
+## Technologies Used
 
-Changes made via Lovable will be committed automatically to this repo.
+### Frontend:
+- React.js
+- Tailwind CSS / Bootstrap (optional for styling)
+- Axios (for API calls)
 
-**Use your preferred IDE**
+### Backend:
+- Node.js (optional if backend is included)
+- Express.js
+- MongoDB / Firebase (optional for database)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Deployment:
+- Vercel (for hosting)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Follow these steps to set up the project locally:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/a6af14e4-4330-4acd-8f82-a0fb23be9461) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+1. Clone the repository:
