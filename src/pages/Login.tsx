@@ -1,17 +1,18 @@
+
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { useAuth } from '@/context/AuthContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { toast } from '@/components/ui/use-toast';
-import { cn } from '@/lib/utils';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { signIn, signUp, user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [loginForm, setLoginForm] = useState({
     email: '',
@@ -24,6 +25,12 @@ const Login = () => {
     confirmPassword: '',
   });
 
+  // Redirect if already logged in
+  if (user) {
+    navigate('/');
+    return null;
+  }
+
   const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLoginForm(prev => ({ ...prev, [name]: value }));
@@ -34,47 +41,41 @@ const Login = () => {
     setRegisterForm(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: "Login successful",
-        description: "You have been logged in.",
-      });
-      // Redirect to home page after successful login
+    const { error } = await signIn(loginForm.email, loginForm.password);
+    
+    if (!error) {
       navigate('/');
-    }, 1500);
+    }
+    
+    setIsLoading(false);
   };
 
-  const handleRegisterSubmit = (e: React.FormEvent) => {
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate passwords match
     if (registerForm.password !== registerForm.confirmPassword) {
-      toast({
-        title: "Passwords don't match",
-        description: "Please make sure your passwords match.",
-        variant: "destructive",
-      });
       return;
     }
     
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: "Registration successful",
-        description: "Your account has been created.",
+    const { error } = await signUp(registerForm.email, registerForm.password, registerForm.name);
+    
+    if (!error) {
+      // Don't redirect immediately, let user confirm email first
+      setRegisterForm({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
       });
-      // Redirect to home page after successful registration
-      navigate('/');
-    }, 1500);
+    }
+    
+    setIsLoading(false);
   };
 
   return (
@@ -143,24 +144,6 @@ const Login = () => {
                       >
                         {isLoading ? 'Signing in...' : 'Sign In'}
                       </Button>
-                      
-                      <div className="relative my-6">
-                        <div className="absolute inset-0 flex items-center">
-                          <div className="w-full border-t border-border"></div>
-                        </div>
-                        <div className="relative flex justify-center text-xs uppercase">
-                          <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
-                        </div>
-                      </div>
-                      
-                      <div className="grid grid-cols-2 gap-4">
-                        <Button variant="outline" type="button" className="hover-lift">
-                          Google
-                        </Button>
-                        <Button variant="outline" type="button" className="hover-lift">
-                          Apple
-                        </Button>
-                      </div>
                     </form>
                   </TabsContent>
                   
